@@ -6,3 +6,7 @@ def newMaven()
 {
   sh 'mvn package'
 }
+def newDeploy(ip,contetPath)
+{
+  deploy adapters: [tomcat9(credentialsId: '2d7bffd1-b890-4532-a303-e2f1dcf6d44a', path: '', url: ${ip})], contextPath: ${contextPath}, war: '**/*.[jw]ar'
+}
