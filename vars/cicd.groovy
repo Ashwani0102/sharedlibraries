@@ -8,9 +8,9 @@ def newMaven()
   sh 'mvn package'
 }
 
-def newDeploy(jobName,IP,context)
+def newDeploy(workspace,IP,context)
 {
-  sh "scp /home/ubuntu/.jenkins/workspace/${jobName}/webapp/target/webapp.war ubuntu@${IP}:/opt/tomcat9/webapps/${context}.war"
+  sh "scp ${workspace}/webapp/target/webapp.war ubuntu@${IP}:/opt/tomcat9/webapps/${context}.war"
 }
 
 def seleniumTesting(jobName)
